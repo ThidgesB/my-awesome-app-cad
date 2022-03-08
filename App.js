@@ -1,3 +1,6 @@
+// The purpose of this project is to learn advanced GitHub practices, such as branching and merging branches
+
+
 const express = require('express')
 const app = express()
 // Simple Hello World Node App
