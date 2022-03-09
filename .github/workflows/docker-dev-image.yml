@@ -1,7 +1,7 @@
 name: Docker Dev Image CI
 
 env:
-  DATE_STAMP: $(date +%s)
+  DATE_STAMP: ${date +%s}
 
 on:
   push:
@@ -17,14 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run Docker compose on Dev files
-        run: docker-compose -f "docker-compose-dev.yml" up -d --build test
-
       - name: Env variables
-        run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB
-
-      - name: Add "date-stamp" tag to the image
-        run: docker image tag thidges/my-awesome-app-crm:latest thidges/my-awesome-app-cad:${{env.date-stamp}}
+        run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
 
       - name: Build the Docker Image
         run: docker build . --file Dockerfile --tag thidges/my-awesome-app-cad:latest
+
+      - name: Add "date-stamp" tag to the image
+        run: docker image tag thidges/my-awesome-app-crm:latest thidges/my-awesome-app-cad:${{env.date-stamp}}
