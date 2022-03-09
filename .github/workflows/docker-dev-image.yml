@@ -1,7 +1,7 @@
 name: Docker Dev Image CI
 
 env:
-  DATE_STAMP: $(date +%s)
+  DATE_STAMP: ${date +%s}
 
 on:
   push:
