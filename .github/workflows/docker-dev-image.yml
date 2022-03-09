@@ -24,4 +24,4 @@ jobs:
         run: docker build . --file Dockerfile --tag thidges/my-awesome-app-cad:latest
 
       - name: Add "date-stamp" tag to the image
-        run: docker image tag thidges/my-awesome-app-crm:latest thidges/my-awesome-app-cad:${{env.date-stamp}}
+        run: docker image tag thidges/my-awesome-app-cad:latest thidges/my-awesome-app-cad:${{env.date-stamp}}
