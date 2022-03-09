@@ -4,12 +4,14 @@
     "description": "Hello World in Node with Express",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js"
+        "start": "node app.js",
+        "test": "react-scripts test"
     },
     "author": "Chris Davis",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.17.1"
+        "express": "^4.17.1",
+        "react-scripts": "^5.0.0"
     }
 
 }
