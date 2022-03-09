@@ -1,0 +1,20 @@
+name: Docker Test Image CI
+
+on:
+
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Docker image using testing script
+        run: docker run my-awesome-app-cad npm run test
+
+      - name: Run Docker compose on Dev files
+        run: docker-compose -f "Dockerfile.dev" up -d --build test
