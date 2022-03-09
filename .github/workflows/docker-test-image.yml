@@ -17,7 +17,7 @@ jobs:
         run: docker build . --file Dockerfile --tag thidges/my-awesome-app-cad:latest
 
       - name: Run Docker image using testing script
-        run: docker run my-awesome-app-cad npm run test
+        run: docker run thidges/my-awesome-app-cad npm run test
 
       - name: Run Docker compose on Dev files
         run: docker-compose -f "Dockerfile.dev" up -d --build test
