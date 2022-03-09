@@ -42,7 +42,7 @@ jobs:
           echo
           git --version
           echo
-          maven -version
+          mvn -v
           echo
           gradle -version
           echo
