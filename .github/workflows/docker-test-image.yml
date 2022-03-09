@@ -13,8 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Build Docker image
+        run: docker build . --file Dockerfile --tag thidges/my-awesome-app-cad:latest
+
       - name: Run Docker image using testing script
         run: docker run my-awesome-app-cad npm run test
 
       - name: Run Docker compose on Dev files
         run: docker-compose -f "Dockerfile.dev" up -d --build test
+
+      
