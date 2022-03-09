@@ -1,8 +1,5 @@
 {
     "name": "my-awesome-app-cad",
-    "jest": {
-        "verbose": true
-    },
     "version": "0.1.1",
     "description": "Hello World in Node with Express",
     "main": "app.js",
