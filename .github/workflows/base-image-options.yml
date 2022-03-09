@@ -38,25 +38,15 @@ jobs:
         run: |
           echo ls
           echo java --version
-          echo 
           echo git --version
-          echo
-          echo 
           echo gradle -version
-          echo
           echo ant -version
-          echo
           echo $ANDROID_SDK_ROOT
-          echo
           echo $SELENIUM_JARS
-          echo
           echo $RUNNER_WORKSPACE
-          echo
           echo whoami
-          echo
           echo df
-          echo
-          echo env-0 | sort -z | tr '\0 \n'
+          echo env-0 | sort -z | tr '\0' '\n'
           
 
       
