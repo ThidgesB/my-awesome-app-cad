@@ -25,3 +25,12 @@ jobs:
 
       - name: Add "date-stamp" tag to the image
         run: docker image tag thidges/my-awesome-app-cad:latest thidges/my-awesome-app-cad:${{env.date-stamp}}
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push image to Docker Hub repository
+        run: docker push --all-tags thidges/my-awesome-app-cad
