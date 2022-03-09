@@ -20,8 +20,8 @@ jobs:
       - name: Env variables
         run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
 
-      - name: Add "date-stamp" tag to the image
-        run: docker image tag thidges/my-awesome-app-crm:latest thidges/my-awesome-app-cad:${{env.date-stamp}}
-
       - name: Build the Docker Image
         run: docker build . --file Dockerfile --tag thidges/my-awesome-app-cad:latest
+
+      - name: Add "date-stamp" tag to the image
+        run: docker image tag thidges/my-awesome-app-crm:latest thidges/my-awesome-app-cad:${{env.date-stamp}}
