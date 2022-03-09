@@ -21,7 +21,7 @@ jobs:
         run: docker-compose -f "docker-compose-dev.yml" up -d --build test
 
       - name: Env variables
-       run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB
+        run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB
 
       - name: Add "date-stamp" tag to the image
         run: docker image tag thidges/my-awesome-app-crm:latest thidges/my-awesome-app-cad:${{env.date-stamp}}
