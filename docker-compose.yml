@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  web:
+    container_name: my-awesome-app-cad
+    image: thidges/my-awesome-app-cad:latest
+    ports:
+      - '80:8080'
+    command: ['node', 'App.js']

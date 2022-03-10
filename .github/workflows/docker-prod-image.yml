@@ -1,0 +1,34 @@
+name: Production Build
+
+env:
+  DATE_STAMP: $(date +%s)
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set env vars
+        run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
+
+      - name: build docker image
+        run: docker build . --file Dockerfile --tag thidges/my-awesome-app-cad:latest
+
+      - name: Add "date-stamp" tag to image
+        run: docker image tag thidges/my-awesome-app-cad:latest thidges/my-awesome-app-cad:${{env.date-stamp}}
+
+      - name: Login to Docker hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push image to docker hub
+        run: docker push --all-tags thidges/my-awesome-app-cad
