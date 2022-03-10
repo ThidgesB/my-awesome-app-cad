@@ -33,4 +33,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push image to Docker Hub repository
-        run: docker push --all-tags thidges/my-awesome-app-cad:${{env.date-stamp}}
+        run: docker push --all-tags thidges/my-awesome-app-cad:latest
