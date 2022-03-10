@@ -1,5 +1,8 @@
 name: Docker Test Image CI
 
+env:
+  DATE_STAMP: $(date +%s)
+
 on:
 
   pull_request:
@@ -13,10 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Env vars
+        run: echo "date-stamp=${{env.DATE_STAMP}}" >> $GITHUB_ENV
+
       - name: Build Docker image
-        run: docker build . --file Dockerfile --tag thidges/my-awesome-app-cad:latest
+        run: docker build . --file Dockerfile --tag thidges/my-awesome-app-cad:${{ env.date-stamp }}
 
       - name: Run Docker image using testing script
-        run: docker run thidges/my-awesome-app-cad npm run test
+        run: docker run thidges/my-awesome-app-cad:${{ env.date-stamp }} npm run test
 
       
