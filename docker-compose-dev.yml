@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  web:
+    container_name: my-awesome-app-cad-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+  test:
+    container_name: my-awesome-app-cad-dev-test
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: ['npm', 'run', 'test']
